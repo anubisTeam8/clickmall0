@@ -66,7 +66,7 @@ class RestPage extends StatelessWidget {
           SizedBox(
             height: 75.h,
             child: ListView.builder(
-              itemCount: 4,
+              itemCount: 4, shrinkWrap: true,
               scrollDirection: Axis.horizontal, padding: EdgeInsets.symmetric(horizontal: 10.w),
               itemBuilder: (context, index) =>  const Categories(),
             ),

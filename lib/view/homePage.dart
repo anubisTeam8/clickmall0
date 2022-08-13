@@ -62,17 +62,14 @@ class HomePage extends StatelessWidget {
                 child: Text("View all", style: TextStyle(color: orange, fontSize: 14.sp),)),
           ],
         ),
-          SizedBox(
-            height: 295.h,
-            child: GridView.count(crossAxisCount: 2,
-              padding: EdgeInsets.only(top: 5.h), childAspectRatio: 1.1,
-              children: List.generate(4, (index) => const RestCard(
-                i:     "https://www.telegraph.co.uk/content/dam/news/2019/05/15/TELEMMGLPICT000141182148_trans_NvBQzQNjv4BquOv8qdqAtg5F-Rc30df4dav0L-Zru66PfXG2lY91pQ0.jpeg",
-                t1: "Morreis Resturant",
-                t2: "Egypt, Cairo",
-                r: 4.5,
-              )),
-            ),
+          GridView.count(crossAxisCount: 2, shrinkWrap: true,
+            padding: EdgeInsets.only(top: 5.h), childAspectRatio: 1.1,
+            children: List.generate(4, (index) => const RestCard(
+              i:     "https://www.telegraph.co.uk/content/dam/news/2019/05/15/TELEMMGLPICT000141182148_trans_NvBQzQNjv4BquOv8qdqAtg5F-Rc30df4dav0L-Zru66PfXG2lY91pQ0.jpeg",
+              t1: "Morreis Resturant",
+              t2: "Egypt, Cairo",
+              r: 4.5,
+            )),
           ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -83,17 +80,14 @@ class HomePage extends StatelessWidget {
                 child: Text("View all", style: TextStyle(color: orange, fontSize: 14.sp),)),
           ],
         ),
-        SizedBox(
-          height: 290.h,
-          child: GridView.count(crossAxisCount: 2,
-            padding: EdgeInsets.only(top: 5.h), childAspectRatio: 1.1,
-            children: List.generate(4, (index) => const RestCard(
-              i:     "https://www.telegraph.co.uk/content/dam/news/2019/05/15/TELEMMGLPICT000141182148_trans_NvBQzQNjv4BquOv8qdqAtg5F-Rc30df4dav0L-Zru66PfXG2lY91pQ0.jpeg",
-              t1: "Morreis Resturant",
-              t2: "Egypt, Cairo",
-              r: 4.5,
-            )),
-          ),
+        GridView.count(crossAxisCount: 2, shrinkWrap: true,
+          padding: EdgeInsets.only(top: 5.h), childAspectRatio: 1.1,
+          children: List.generate(4, (index) => const RestCard(
+            i:     "https://www.telegraph.co.uk/content/dam/news/2019/05/15/TELEMMGLPICT000141182148_trans_NvBQzQNjv4BquOv8qdqAtg5F-Rc30df4dav0L-Zru66PfXG2lY91pQ0.jpeg",
+            t1: "Morreis Resturant",
+            t2: "Egypt, Cairo",
+            r: 4.5,
+          )),
         ),
       ],
     );
