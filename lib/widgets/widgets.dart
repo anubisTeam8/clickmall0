@@ -1,19 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:task1/colors.dart';
+import 'package:task1/controllers/restCont.dart';
+import 'package:task1/controllers/viewallCont.dart';
+import 'package:task1/models/Page1Class.dart';
 import 'package:task1/view/itemPage.dart';
 import 'package:task1/view/restPage.dart';
+import 'package:task1/view/viewallPage.dart';
 
 class TextInput extends StatelessWidget {
-  const TextInput({Key? key, required this.i, required this.l, required this.o}) : super(key: key);
+  const TextInput({Key? key, required this.t, required this.i, required this.l, required this.o}) : super(key: key);
+  final TextEditingController t;
   final Icon i;
   final String l;
   final bool o;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50.h, width: 300.w,
+      height: 55.h, width: 300.w,
       child: TextField(
+        controller: t,
         obscureText: o,
         decoration: InputDecoration(
           hintText: l,
@@ -28,53 +35,58 @@ class TextInput extends StatelessWidget {
 }
 
 class RestCard extends StatelessWidget {
-  const RestCard({Key? key, required this.t1, required this.t2, required this.r, required this.i}) : super(key: key);
+  const RestCard({Key? key, required this.t1, required this.t2, required this.r, required this.i, required this.id}) : super(key: key);
   final String i;
   final String t1;
   final String t2;
   final double r;
+  final String id;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) => RestPage(
-        i: i,
-        t1: t1,
-        t2: t2,
-        r: r,
-      )));},
-      child: Padding(
-        padding: EdgeInsets.all(5.h),
-        child: Card(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.h)
-          ),
-          child: Column(
-            children: [
-              ClipRRect(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(15.h), topRight: Radius.circular(15.h)
-                  ),
-                  child: Image.network(i, height: 75.h, fit: BoxFit.fitWidth, width: double.infinity,)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(t1, style: TextStyle(fontSize: 10.sp),),
-                  Icon(Icons.favorite_border, size: 18.w,),
-                ],
-              ),
-              Row(children: [
-                SizedBox(width: 10.h,),
-                Icon(Icons.location_on, size: 15.w,),
-                Text(t2, style: TextStyle(fontSize: 10.sp),)
-              ],),
-              Row(
-                children: [
+    return SizedBox(
+      height: 150.h, width: 165.w,
+      child: GestureDetector(
+        onTap: () {id_rest = id;
+          Get.to(() => RestPage(
+            i: i,
+            t1: t1,
+            t2: t2,
+            r: r,
+        ));},
+        child: Padding(
+          padding: EdgeInsets.all(5.h),
+          child: Card(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.h)
+            ),
+            child: Column(
+              children: [
+                ClipRRect(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15.h), topRight: Radius.circular(15.h)
+                    ),
+                    child: Image.network(i, height: 75.h, fit: BoxFit.fitWidth, width: double.infinity,)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text("$t1                      ", style: TextStyle(fontSize: 10.sp),),
+                    Icon(Icons.favorite_border, size: 18.w,),
+                  ],
+                ),
+                Row(children: [
                   SizedBox(width: 10.h,),
-                  Icon(Icons.star, color: orange, size: 15.w,),
-                  Text(r.toString(), style: TextStyle(fontSize: 10.sp),)
-                ],
-              ),
-            ],
+                  Icon(Icons.location_on, size: 15.w,),
+                  Text(t2, style: TextStyle(fontSize: 10.sp),)
+                ],),
+                Row(
+                  children: [
+                    SizedBox(width: 10.h,),
+                    Icon(Icons.star, color: orange, size: 15.w,),
+                    Text(r.toString(), style: TextStyle(fontSize: 10.sp),)
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -83,7 +95,10 @@ class RestCard extends StatelessWidget {
 }
 
 class Categories extends StatelessWidget {
-  const Categories({Key? key}) : super(key: key);
+  const Categories({Key? key, required this.t, required this.i, required this.id}) : super(key: key);
+  final String t;
+  final String i;
+  final String id;
 
   @override
   Widget build(BuildContext context) {
@@ -111,8 +126,10 @@ class Categories extends StatelessWidget {
 }
 
 class Items extends StatelessWidget {
-  const Items({Key? key}) : super(key: key);
-
+  const Items({Key? key, required this.t, required this.i, required this.p}) : super(key: key);
+  final String t;
+  final String i;
+  final String p;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -129,14 +146,14 @@ class Items extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(15.w),
             child: Image.network(height: 80.h, width: 65.h, fit: BoxFit.fitWidth,
-              "https://i.pinimg.com/originals/2c/c6/1e/2cc61eeaa1126be2517cd089c01ce1b9.jpg",
+              "http://abdo1572001-003-site8.atempurl.com/storage/app/$i",
             ),
           ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("\n  Pizza", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),),
-                Text("  Cafe - Western Food", style: TextStyle(color: gray, fontSize: 12.sp),),
+                Text("\n  $t", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),),
+                Text(r"  Price: $" + p.toString(), style: TextStyle(color: gray, fontSize: 12.sp),),
                 Row(
                   children: [
                     SizedBox(width: 5.w,),
@@ -157,8 +174,11 @@ class Items extends StatelessWidget {
 }
 
 class ItemsFav extends StatelessWidget {
-  const ItemsFav({Key? key}) : super(key: key);
-
+  const ItemsFav({Key? key, required this.t, required this.t2, required this.p, required this.f}) : super(key: key);
+  final String t;
+  final String t2;
+  final String p;
+  final bool f;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -175,14 +195,14 @@ class ItemsFav extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(15.w),
             child: Image.network(height: 80.h, width: 65.h, fit: BoxFit.fitWidth,
-              "https://i.pinimg.com/originals/2c/c6/1e/2cc61eeaa1126be2517cd089c01ce1b9.jpg",
+              "http://abdo1572001-003-site8.atempurl.com/storage/app/$p",
             ),
           ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("\n  Pizza", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),),
-                Text("  Cafe - Western Food", style: TextStyle(color: gray, fontSize: 12.sp),),
+                Text("\n  $t", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),),
+                Text("  $t2", style: TextStyle(color: gray, fontSize: 12.sp),),
                 Row(
                   children: [
                     SizedBox(width: 5.w,),
@@ -194,7 +214,7 @@ class ItemsFav extends StatelessWidget {
               ],
             ),
             SizedBox(width: 95.w,),
-            Icon(Icons.favorite, color: red, size: 25.w),
+            f?Icon(Icons.favorite, color: red, size: 25.w):const SizedBox(),
           ],
         ),
       ),
@@ -220,3 +240,34 @@ class ItemsCart extends StatelessWidget {
   }
 }
 
+class Page1List extends StatelessWidget {
+  const Page1List({Key? key, required this.data}) : super(key: key);
+  final ListData data;
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Text("${data.date?.nameE}", style: TextStyle(color: gray, fontSize: 18.sp, fontWeight: FontWeight.bold),),
+            GestureDetector(onTap: () {
+              id = "${data.date?.id}";
+              Get.to(() => ViewAllPage());},
+                child: Text("View all", style: TextStyle(color: orange, fontSize: 14.sp),)),
+          ],
+        ),
+        Wrap(
+          children: List.generate(data.rest?.length??0, (index) => RestCard(
+            i:"http://abdo1572001-003-site8.atempurl.com/storage/app/${data.rest?[index].photo}",
+            t1: "${data.rest?[index].nameE}",
+            t2: "${data.rest?[index].address}",
+            id: "${data.rest?[index].id}",
+            r: 4.5,
+          )),
+        ),
+      ],
+    );
+  }
+}

@@ -10,7 +10,8 @@ class FavouritePage extends StatelessWidget {
     return ListView.builder(
       padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 50.h),
       itemCount: 3, shrinkWrap: true,
-      itemBuilder: (context, index) => const ItemsFav(),
+      itemBuilder: (context, index) =>
+          const ItemsFav(t: "asd", t2: "asd", p: "google.com.png", f: true,),
     );
   }
 }

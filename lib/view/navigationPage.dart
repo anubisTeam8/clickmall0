@@ -16,7 +16,7 @@ class NavigationPage extends StatefulWidget {
 class _NavigationPageState extends State<NavigationPage> {
   int current = 0;
 
-  final List <Widget> pages = const [HomePage(), FavouritePage(), CartPage(), ProfilePage()];
+  final List <Widget> pages = [HomePage(), FavouritePage(), CartPage(), ProfilePage()];
 
   @override
   Widget build(BuildContext context) {

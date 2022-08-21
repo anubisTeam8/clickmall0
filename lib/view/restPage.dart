@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:task1/colors.dart';
 import 'package:task1/widgets/widgets.dart';
+import '../controllers/restCont.dart';
 
 class RestPage extends StatelessWidget {
-  const RestPage({Key? key, required this.i, required this.t1, required this.t2, required this.r}) : super(key: key);
+  RestPage({Key? key, required this.i, required this.t1, required this.t2, required this.r}) : super(key: key);
   final String i;
   final String t1;
   final String t2;
   final double r;
+  final RestCont c = Get.put(RestCont());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
+      body: Obx(() => c.loading.value?const Center(child: CircularProgressIndicator()):
+    ListView(
         children: [
           Stack(
             // alignment: Alignment.center,
@@ -66,21 +70,29 @@ class RestPage extends StatelessWidget {
           SizedBox(
             height: 75.h,
             child: ListView.builder(
-              itemCount: 4, shrinkWrap: true,
+              itemCount: c.data.value?.menu?.length, shrinkWrap: true,
               scrollDirection: Axis.horizontal, padding: EdgeInsets.symmetric(horizontal: 10.w),
-              itemBuilder: (context, index) =>  const Categories(),
+              itemBuilder: (context, index) => Categories(
+                i: "${c.data.value?.menu?[index].photo}",
+                t: "${c.data.value?.menu?[index].nameE}",
+                id: "${c.data.value?.menu?[index].id}",
+              ),
             ),
           ),
           SizedBox(height: 10.h,),
           SizedBox(
             height: 300,
             child: ListView.builder(
-              itemCount: 4,
-              itemBuilder: (context, index) => const Items(),
+              itemCount: c.data.value?.product?.length,
+              itemBuilder: (context, index) => Items(
+                t: "${c.data.value?.product?[index].nameE}",
+                p: "${c.data.value?.product?[index].price}",
+                i: "${c.data.value?.product?[index].photo}",
+              ),
             ),
           )
         ],
-      ),
+      ))
     );
   }
 }
