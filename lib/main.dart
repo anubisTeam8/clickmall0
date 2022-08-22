@@ -5,7 +5,7 @@ import 'package:task1/services/getstorage.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:task1/view/loginPage.dart';
 import 'package:task1/view/navigationPage.dart';
-import 'controllers/testCont.dart';
+import 'controllers/authCont.dart';
 
 void main() async {
   await GetStorage.init();

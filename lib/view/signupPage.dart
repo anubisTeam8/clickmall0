@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:task1/colors.dart';
 import 'package:task1/widgets/widgets.dart';
-import '../controllers/testCont.dart';
+import '../controllers/authCont.dart';
 
 class SignupPage extends StatelessWidget {
   SignupPage({Key? key}) : super(key: key);

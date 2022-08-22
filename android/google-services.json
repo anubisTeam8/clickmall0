@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1027751844358",
+    "project_id": "clickmall-71bf9",
+    "storage_bucket": "clickmall-71bf9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027751844358:android:acbc5a878821cb9fed8187",
+        "android_client_info": {
+          "package_name": "com.example.task1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1027751844358-i8u6e8c01j5l8p4snr60sni1v1vbv724.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU7gvdtkHr3tU6DDMPnB_eCRBU5J-Tl_M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1027751844358-i8u6e8c01j5l8p4snr60sni1v1vbv724.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

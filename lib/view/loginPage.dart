@@ -7,7 +7,7 @@ import 'package:task1/colors.dart';
 import 'package:task1/view/loginPage2.dart';
 import 'package:task1/view/signupPage.dart';
 import 'package:task1/widgets/widgets.dart';
-import '../controllers/testCont.dart';
+import '../controllers/authCont.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
